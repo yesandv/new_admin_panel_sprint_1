@@ -57,6 +57,7 @@ CREATE TABLE IF NOT EXISTS content.person_film_work (
         ON DELETE CASCADE
 );
 
+CREATE INDEX film_work_type_rating_idx ON content.film_work(type, rating);
 CREATE INDEX genre_film_work_genre_id_idx ON content.genre_film_work (genre_id);
 CREATE INDEX person_film_work_person_id_idx ON content.person_film_work (person_id);
 CREATE UNIQUE INDEX film_work_title_creation_date_idx ON content.film_work(title, creation_date);
