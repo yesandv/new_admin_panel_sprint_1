@@ -21,7 +21,7 @@ class SQLiteLoader:
         try:
             sqlite_cursor.execute(f"SELECT * FROM {table_name}")
         except sqlite3.OperationalError:
-            logger.exception(f"No such table '{table_name}' in the DB")
+            logger.exception(f"No such table '%s' in the DB", table_name)
         while rows := sqlite_cursor.fetchmany(BATCH_SIZE):
             yield rows
 

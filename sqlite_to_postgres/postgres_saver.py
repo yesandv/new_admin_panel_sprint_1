@@ -56,7 +56,7 @@ class PostgresSaver:
                 )
                 self.connection.commit()
         except UndefinedTable:
-            logger.exception(f"The table '{table_name}' doesn't exist in the DB")
+            logger.exception(f"The table '%s' doesn't exist in the DB", table_name)
             self.connection.rollback()
         finally:
             pg_cursor.close()
