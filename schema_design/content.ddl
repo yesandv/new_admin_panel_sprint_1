@@ -61,3 +61,5 @@ CREATE INDEX film_work_type_rating_idx ON content.film_work(type, rating);
 CREATE INDEX genre_film_work_genre_id_idx ON content.genre_film_work (genre_id);
 CREATE INDEX person_film_work_person_id_idx ON content.person_film_work (person_id);
 CREATE UNIQUE INDEX film_work_title_creation_date_idx ON content.film_work(title, creation_date);
+CREATE UNIQUE INDEX film_work_id_genre_id_idx ON content.genre_film_work (film_work_id, genre_id);
+CREATE UNIQUE INDEX film_work_id_person_id_role_idx ON content.person_film_work (film_work_id, person_id, role);
