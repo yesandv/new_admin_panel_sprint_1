@@ -10,6 +10,13 @@ class FilmWorkType(models.TextChoices):
     TV = ("tv_series", _("tv_series"))
 
 
+class Role(models.TextChoices):
+    ACTOR = ("actor", _("actor"))
+    DIRECTOR = ("director", _("director"))
+    PRODUCER = ("producer", _("producer"))
+    WRITER = ("writer", _("writer"))
+
+
 class UUIDMixin(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
 
@@ -95,9 +102,17 @@ class GenreFilmWork(UUIDMixin):
 
     class Meta:
         db_table = 'content"."genre_film_work'
+        verbose_name = _("genre_film_work")
+        verbose_name_plural = _("genre_film_works")
         indexes = [
             models.Index(
                 fields=["genre"], name="genre_film_work_genre_id_idx"
+            ),
+        ]
+        constraints = [
+            models.UniqueConstraint(
+                fields=["film_work", "genre"],
+                name="film_work_id_genre_id_idx",
             ),
         ]
 
@@ -109,13 +124,21 @@ class PersonFilmWork(UUIDMixin):
     film_work = models.ForeignKey(
         FilmWork, on_delete=models.CASCADE, related_name="person_film_works"
     )
-    role = models.CharField(_("role"))
+    role = models.TextField(_("role"), choices=Role.choices)
     created = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         db_table = 'content"."person_film_work'
+        verbose_name = _("person_film_work")
+        verbose_name_plural = _("person_film_works")
         indexes = [
             models.Index(
                 fields=["person"], name="person_film_work_person_id_idx"
+            ),
+        ]
+        constraints = [
+            models.UniqueConstraint(
+                fields=["film_work", "person", "role"],
+                name="film_work_id_person_id_role_idx",
             ),
         ]
