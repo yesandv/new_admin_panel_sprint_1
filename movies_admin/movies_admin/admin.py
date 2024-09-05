@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.utils.translation import gettext_lazy as _
 
 from .models import FilmWork, Genre, GenreFilmWork, Person, PersonFilmWork
 
@@ -31,7 +32,7 @@ class FilmWorkAdmin(admin.ModelAdmin):
     def get_genres(self, obj):
         return ", ".join([genre.name for genre in obj.genres.all()])
 
-    get_genres.short_description = "Жанры"
+    get_genres.short_description = _("genres")
 
 
 @admin.register(Genre)

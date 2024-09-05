@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-03 19:02+0000\n"
+"POT-Creation-Date: 2024-09-05 16:22+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: movies_admin/admin.py:35 movies_admin/models.py:42
+msgid "genres"
+msgstr ""
 
 #: movies_admin/apps.py:8
 msgid "movies_admin"
@@ -56,10 +60,6 @@ msgstr ""
 
 #: movies_admin/models.py:41
 msgid "genre"
-msgstr ""
-
-#: movies_admin/models.py:42
-msgid "genres"
 msgstr ""
 
 #: movies_admin/models.py:49
